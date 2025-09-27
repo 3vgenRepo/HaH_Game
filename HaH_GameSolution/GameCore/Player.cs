@@ -12,13 +12,13 @@
 			}
 		}
 
-		public Player(int attack, int armor, int health, int[] damage, bool isAlive = true)
+		public Player(string name, int attack, int armor, int health, int[] damage, bool isAlive = true) : base(name)
 		{
-			this.Attack = attack;
-			this.Armor = armor;
-			this.Health = health;
-			this.Damage = damage;
-			this.IsAlive = isAlive;
+			Attack = attack;
+			Armor = armor;
+			Health = health;
+			Damage = damage;
+			IsAlive = isAlive;
 		}
 
 		public void Heal()
