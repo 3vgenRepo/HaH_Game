@@ -1,14 +1,11 @@
-﻿using System.Reflection.Metadata;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace GameCore
+﻿namespace GameCore
 {
-    public abstract class Creature
-    {
-        private bool _isAlive;
+	public abstract class Creature
+	{
+		private bool _isAlive;
 		private int _attack;
 		private int _armor;
-        private int _health;
+		private int _health;
 		private int[] _damage = new int[2];
 
 		public bool IsAlive { get => _isAlive; set => _isAlive = value; }
@@ -27,7 +24,7 @@ namespace GameCore
 			get => _armor;
 			set
 			{
-				_armor = (value > 0 && value <= 30) ? value :  throw new Exception("Assignment error. The armor parameter must be between 1 and 30.");
+				_armor = (value > 0 && value <= 30) ? value : throw new Exception("Assignment error. The armor parameter must be between 1 and 30.");
 			}
 		}
 
@@ -45,10 +42,6 @@ namespace GameCore
 					_health = 0;
 					_isAlive = false;
 				}
-				//else
-				//{
-				//	throw new Exception("Assignment error. Health parameter must be positive.");
-				//}
 			}
 		}
 
@@ -75,16 +68,14 @@ namespace GameCore
 			do
 			{
 				Random rand = new Random();
-				int nextAttackChance = rand.Next(1,7);
+				int nextAttackChance = rand.Next(1, 7);
 
-				if(nextAttackChance == 5 || nextAttackChance == 6)
+				if (nextAttackChance == 5 || nextAttackChance == 6)
 				{
 					defending.Health -= rand.Next(attacker.Damage[0], attacker.Damage[1] + 1);
 					break;
 				}
-
-				attackModifier--;
-			} while (attackModifier > 0);
+			} while (attackModifier-- > 0);
 		}
 	}
 }
